@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form (submit)="doSignup()" #userForm="ngForm">
+    <ion-list>
+
+      <ion-item>
+        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="applicationUser.Name" name="Name" #Name="ngModel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="applicationUser.Email" name="applicationUser.Email" #Email="ngModel"></ion-input>
+      </ion-item>
+
+      <!--
+      Want to add a Username? Here you go:
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+      </ion-item>
+      -->
+
+      <ion-item>
+        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="applicationUser.Password" name="Password" #Password="ngModel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>{{ 'CONFIRM_PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="applicationUser.ConfirmPassword" name="ConfirmPassword" #ConfirmPassword="ngModel">></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" [disabled]="!userForm.form.valid"  block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>
