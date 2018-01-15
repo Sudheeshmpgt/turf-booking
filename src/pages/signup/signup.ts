@@ -47,6 +47,12 @@ export class SignupPage {
         toast.present();
       }
       else{
+        let toast = this.toastCtrl.create({
+          message: resp["message"],
+          duration: 5000,
+          position: 'top'
+        });
+        toast.present();
         this.navCtrl.push(MainPage);
       }
      
