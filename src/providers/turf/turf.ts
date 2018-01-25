@@ -28,7 +28,7 @@ export class TurfProvider {
   }
 
   turffind(id:number):Observable<any>{
-    return this.http.post<any>(this.apiUrl+'turffindapi',id,httpOptions).pipe(
+    return this.http.get<any>(this.apiUrl+'turffindapi/'+id,httpOptions).pipe(
       tap(resp =>console.log(resp)),
       
       catchError(this.handleError<Turf>('turfdetails'))

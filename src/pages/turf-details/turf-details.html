@@ -1,0 +1,30 @@
+<!--
+  Generated template for the TurfDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{turf.Name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="item-profile" text-center #image [style.background-image]="'url(' + image + ')'">
+      </div>
+     <!-- <ion-img style="width: 80px; height: 80px;" [src]="image"></ion-img>-->
+      <div class="item-detail" padding>
+        <h2>{{turf.Contact}}</h2>
+        <p>{{turf.Location}}</p>
+      </div>
+
+      <div *ngFor="let g of groundList">
+          <button ion-button round>{{g.Number}}</button>
+          
+      </div>
+      
+</ion-content>

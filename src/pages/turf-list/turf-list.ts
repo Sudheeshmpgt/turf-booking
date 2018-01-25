@@ -33,16 +33,17 @@ export class TurfListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TurfListPage');
     this.getTurfs();
+    console.log('ionViewDidLoad TurfDetailsPage');
   }
 
   getTurfs():void{
     this.turfProvider.turflist().subscribe(
       result=>{
-          console.log(result);
+          //console.log(result);
           if(result["success"]==true)
           {
             this.turflist=result["turfs"];
-            console.log(this.turflist);
+            //console.log(this.turflist);
           }
           else{
             let toast = this.toastCtrl.create({
@@ -58,6 +59,28 @@ export class TurfListPage {
         console.error(err);
       }
 
+    )
+
+  }
+
+  //Fetch the turf
+  fetchTurf(id:number):void{
+    console.log(id);
+    this.turfProvider.turffind(id).subscribe(
+        res=>{
+          if(res["success"])
+          {
+            //console.log(res);
+            this.navCtrl.push('TurfDetailsPage', {
+              turf:res
+            });
+          }
+          
+        },
+        err=>{
+          console.error(err);
+        }
+      
     )
 
   }
