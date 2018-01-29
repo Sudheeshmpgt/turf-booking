@@ -31,7 +31,7 @@ export class GroundProvider {
   }
 
   groundfind(id:number):Observable<any>{
-    return this.http.post<any>(this.apiUrl+'turffindapi',id,httpOptions).pipe(
+    return this.http.post<any>(this.apiUrl+'groundfindapi',id,httpOptions).pipe(
       tap(resp =>console.log(resp)),
       
       catchError(this.handleError<Ground>('grounddetails'))

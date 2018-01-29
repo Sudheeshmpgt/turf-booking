@@ -23,7 +23,7 @@
       </div>
 
       <div *ngFor="let g of groundList">
-          <button ion-button round>{{g.Number}}</button>
+          <button ion-button round (click)="openPage(g.Id)">{{g.Number}}</button>
           
       </div>
       

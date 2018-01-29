@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Turf } from '../../models/turf';
 import { Ground } from "../../models/ground";
+import { GroundProvider } from "../../providers/ground/ground";
+import { SlotProvider } from '../../providers/slot/slot';
+import { DateTime } from 'ionic-angular/components/datetime/datetime';
 
 /**
  * Generated class for the TurfDetailsPage page.
@@ -20,7 +23,8 @@ export class TurfDetailsPage {
   turf:Turf=new Turf();
   groundList:Ground[]=[];
   image:string="";
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams,private groundProvider:GroundProvider) {
     var res=navParams.get('turf');
     this.turf=res['turf'];
     this.groundList=res['grounds'];
@@ -34,6 +38,14 @@ export class TurfDetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TurfDetailsPage');
+   
+    console.log('ionViewDidLoad BookingPage');
   }
 
+  openPage(id:number) :void{
+    this.navCtrl.push('BookingPage', {
+     gid: id
+    });
+  }
+ 
 }

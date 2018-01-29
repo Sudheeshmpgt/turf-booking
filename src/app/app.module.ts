@@ -18,6 +18,7 @@ import { MyApp } from './app.component';
 import { ApplicationUserProvider } from '../providers/application-user/application-user';
 import { TurfProvider } from '../providers/turf/turf';
 import { GroundProvider } from '../providers/ground/ground';
+import { SlotProvider } from '../providers/slot/slot';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -73,7 +74,8 @@ export function provideSettings(storage: Storage) {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ApplicationUserProvider,
     TurfProvider,
-    GroundProvider
+    GroundProvider,
+    SlotProvider
   ]
 })
 export class AppModule { }
