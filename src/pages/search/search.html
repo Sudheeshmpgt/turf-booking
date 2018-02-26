@@ -10,13 +10,16 @@
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
   <ion-list>
-    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
-      <ion-avatar item-start>
-        <img [src]="item.profilePic" />
-      </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <p>{{item.about}}</p>
-      <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-    </button>
+    <ion-item-sliding *ngFor="let t of currentItems">
+      <button ion-item (click)="fetchTurf(t.Id)">
+        <ion-avatar item-start>
+          <img [src]="t.profilePic" />
+        </ion-avatar>
+        <h2>{{t.Name}}</h2>
+        <p>{{t.Contact}}</p>
+        
+        <ion-note item-end >{{t.Location}}</ion-note>
+      </button>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

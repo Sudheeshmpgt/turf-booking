@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams ,ToastController} from 'ionic-angul
 import { Turf } from "../../models/turf";
 import { TurfProvider  } from "../../providers/turf/turf";
 import { concat } from 'rxjs/observable/concat';
+import { Image } from "../../models/image";
 
 /**
  * Generated class for the TurfListPage page.
@@ -20,6 +21,8 @@ export class TurfListPage {
 
   turflist: Turf[]=[];
   string="Hello World";
+  profilePic:string="";
+  dataPresent:boolean=false;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -34,6 +37,7 @@ export class TurfListPage {
     console.log('ionViewDidLoad TurfListPage');
     this.getTurfs();
     console.log('ionViewDidLoad TurfDetailsPage');
+    
   }
 
   getTurfs():void{
@@ -43,7 +47,9 @@ export class TurfListPage {
           if(result["success"]==true)
           {
             this.turflist=result["turfs"];
-            //console.log(this.turflist);
+            console.log(this.turflist);
+            this.dataPresent=true;
+            
           }
           else{
             let toast = this.toastCtrl.create({
@@ -54,6 +60,7 @@ export class TurfListPage {
             toast.present();
 
           }
+          
       },
       err=>{
         console.error(err);
@@ -75,7 +82,14 @@ export class TurfListPage {
               turf:res
             });
           }
-          
+          else{
+            let toast = this.toastCtrl.create({
+              message: res["message"],
+              duration: 3000,
+              position: 'top'
+            });
+            toast.present();
+          }
         },
         err=>{
           console.error(err);

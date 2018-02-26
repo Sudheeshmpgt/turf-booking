@@ -16,12 +16,13 @@
 <ion-content padding>
 
   
-  <ion-list>
-    <ion-item-sliding *ngFor="let t of turflist">
+  <ion-list *ngIf="dataPresent==true">
+    <ion-item-sliding *ngFor="let t of turflist" >
       <button ion-item (click)="fetchTurf(t.Id)">
-       <!-- <ion-avatar item-start>
-          <img [src]="item.profilePic" />
-        </ion-avatar>-->
+       <ion-avatar item-start >
+         <!-- <ion-img  [src]="t.Image"></ion-img>-->
+          <img [src]="t.Image" />
+        </ion-avatar>
         <h2>{{t.Name}}</h2>
         <p>{{t.Contact}}</p>
         

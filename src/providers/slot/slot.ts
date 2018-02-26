@@ -17,12 +17,12 @@ const httpOptions={
 
 @Injectable()
 export class SlotProvider {
-  private apiUrl='http://localhost:497843/slot/';
+  private apiUrl='http://localhost:49783/slot/';
   constructor(public http: HttpClient) {
     console.log('Hello SlotProvider Provider');
   }
-  slotlist(id:number,date:string):Observable<any>{
-    return this.http.get<any>(this.apiUrl+'slotfindapi?groundId='+id+'&date='+date,httpOptions);
+  slotlist(id:number,date:DateTime):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'slotapi?groundId='+id+'&date='+date,httpOptions);
   }
 
 }

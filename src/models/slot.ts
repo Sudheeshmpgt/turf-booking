@@ -1,10 +1,11 @@
 import { DateTime } from "ionic-angular/components/datetime/datetime";
 
-export class SLot{
+export class Slot{
     Id:number;
     SName:string;
-    StartTime:DateTime;
-    EndTime:DateTime;
-    Rate:string;
+    StartTime:string;
+    EndTime:string;
+    Rate:number;
+    NumberOfPlayers:number;
 
 }

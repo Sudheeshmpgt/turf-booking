@@ -5,5 +5,5 @@ export class Turf{
     Contact:string;
     OwnerName:string;
     OwnerContact:string;
-    
+    Image:string;
 }

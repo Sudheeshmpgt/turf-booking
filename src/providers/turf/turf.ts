@@ -34,6 +34,10 @@ export class TurfProvider {
       catchError(this.handleError<Turf>('turfdetails'))
     );
   }
+
+  turfsearch(name:string):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'turfsearchapi?name='+name,httpOptions);
+  }
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
    

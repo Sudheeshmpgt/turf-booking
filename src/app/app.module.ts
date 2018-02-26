@@ -19,6 +19,8 @@ import { ApplicationUserProvider } from '../providers/application-user/applicati
 import { TurfProvider } from '../providers/turf/turf';
 import { GroundProvider } from '../providers/ground/ground';
 import { SlotProvider } from '../providers/slot/slot';
+import { BookingProvider } from '../providers/booking/booking';
+import { SlotdetailProvider } from '../providers/slotdetail/slotdetail';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -75,7 +77,9 @@ export function provideSettings(storage: Storage) {
     ApplicationUserProvider,
     TurfProvider,
     GroundProvider,
-    SlotProvider
+    SlotProvider,
+    BookingProvider,
+    SlotdetailProvider
   ]
 })
 export class AppModule { }
