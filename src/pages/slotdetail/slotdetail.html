@@ -1,0 +1,30 @@
+<!--
+  Generated template for the SlotdetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>slotdetail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="dataPresent==true">
+    <ion-list-header>
+        {{slot.Ground.Turf.Name}}
+    </ion-list-header>
+ <ion-item >{{slot.Ground.Number}}</ion-item>
+   <ion-item>{{slot.SName}}</ion-item>
+    <ion-item>{{bookingDate}}</ion-item>
+    <ion-item>{{startTime}}-{{endTime}}</ion-item>
+    <ion-item>{{NumberOfPlayers}}</ion-item>
+    <ion-item>{{totalAmount}}</ion-item>
+    <button ion-button full (click)="bookSlot(slot.Id,slot.Rate)">Confirm Booking</button>
+  </ion-list>
+
+</ion-content>
