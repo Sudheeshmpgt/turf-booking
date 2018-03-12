@@ -5,9 +5,10 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>{{turf.Name}}</ion-title>
+    
+  <ion-navbar >
+    
+    <ion-title>Turf-Details</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,6 +17,9 @@
 <ion-content padding>
   <!--  <div class="item-profile" text-center #image [style.background-image]="'url(' + image+ ')'"  style="min-height:100px" *ngIf="image">
       </div>-->
+      
+      <ion-card>
+      <ion-card-header>{{turf.Name}}</ion-card-header>
      <ion-img style="width: 100%;max-width:100%; height: 100px;max-height:100px" [src]="image"></ion-img>
       <div class="item-detail" padding>
         <h2>{{turf.Contact}}</h2>
@@ -23,8 +27,16 @@
       </div>
 
       <div *ngFor="let g of groundList">
-          <button ion-button round (click)="openPage(g.Id)">{{g.Number}}</button>
+          <ion-chip #chip2>
+              <ion-icon name="football" color="light"></ion-icon>
+              <button style="width:3cm" ion-button round color="light" (click)="openPage(g.Id)">{{g.Number}}
+                
+              </button>
+              <ion-icon name="arrow-dropright-circle" color="light" ></ion-icon>
+            </ion-chip>
+         
           
       </div>
-      
+    </ion-card>
 </ion-content>
+

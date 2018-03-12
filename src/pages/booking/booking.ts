@@ -73,7 +73,7 @@ export class BookingPage {
       res=>{
         if(res["success"])
         {
-          //console.log(res);
+        console.log(res);
           this.navCtrl.push('SlotdetailPage',{slot:res['slot'],startTime:res['startTime'],endTime:res['endTime'],date:this.bookingDate,players:this.NumberOfPlayers});
         }else{
           let toast = this.toastCtrl.create({

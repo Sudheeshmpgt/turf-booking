@@ -44,7 +44,14 @@ export class LoginPage {
       if(resp["success"]==true){
       
         this.navCtrl.push(MainPage);
-      }
+      }else{
+        let toast = this.toastCtrl.create({
+          message: resp["message"],
+          duration: 3000,
+          position: 'top'
+      });
+      toast.present();
+    }
      
     }, (err) => {
 
@@ -52,7 +59,7 @@ export class LoginPage {
 
       // Unable to sign up
       let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
+        message: err["message"],
         duration: 3000,
         position: 'top'
       });

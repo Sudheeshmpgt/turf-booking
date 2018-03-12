@@ -8,8 +8,10 @@
 
 
 <ion-content>
-  <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
-  <ion-list>
+  <ion-toolbar color="light"> 
+     <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
+  </ion-toolbar>
+   <ion-list>
     <ion-item-sliding *ngFor="let t of currentItems">
       <button ion-item (click)="fetchTurf(t.Id)">
         <ion-avatar item-start>
@@ -17,7 +19,7 @@
         </ion-avatar>
         <h2>{{t.Name}}</h2>
         <p>{{t.Contact}}</p>
-        
+        <p>{{t.Location}}</p>
         <ion-note item-end >{{t.Location}}</ion-note>
       </button>
     </ion-item-sliding>

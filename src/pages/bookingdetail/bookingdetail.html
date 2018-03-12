@@ -15,17 +15,46 @@
 
 <ion-content padding>
   <ion-list *ngIf="dataPresent==true">
-    <ion-item>{{bookId}}</ion-item>
+    
+    <ion-item>
+    <ion-label fixed>Booking</ion-label>
+    {{bookId}}
+    </ion-item>
+
     <ion-list-header>
         {{slot.Ground.Turf.Name}}
     </ion-list-header>
- <ion-item >{{slot.Ground.Number}}</ion-item>
-   <ion-item>{{slot.SName}}</ion-item>
-    <ion-item>{{bookingDate}}</ion-item>
-    <ion-item>{{startTime}}-{{endTime}}</ion-item>
-    <ion-item>{{NumberOfPlayers}}</ion-item>
-    <ion-item>{{totalAmount}}</ion-item>
     
+    <ion-item >
+    <ion-label fixed>Ground Name</ion-label>
+    <ion-label>{{slot.Ground.Number}}</ion-label>
+    </ion-item>
+
+    <ion-item >
+    <ion-label fixed>Slot Name</ion-label>
+    <ion-label>{{slot.SName}}</ion-label>
+    </ion-item>
+
+     <ion-item>  
+    <ion-label fixed>Booking Date</ion-label> 
+    <ion-label>{{bookingDate}}</ion-label>
+    </ion-item>
+
+    <ion-item >
+    <ion-label fixed>Slot Time</ion-label> 
+    <ion-label>{{startTime}}-{{endTime}}</ion-label>
+    </ion-item>
+
+    <ion-item >
+    <ion-label fixed>Number Of Players</ion-label> 
+    <ion-label>{{NumberOfPlayers}}</ion-label>
+    </ion-item>
+
+    <ion-item >
+    <ion-label fixed>Amount</ion-label>
+    <ion-label>{{totalAmount}}</ion-label>
+    </ion-item>
+                        
   </ion-list>
 
 </ion-content>
