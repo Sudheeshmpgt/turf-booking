@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>booking</ion-title>
   </ion-navbar>
-  
+
 </ion-header> 
 
 <ion-content padding>
@@ -32,16 +32,26 @@
     </p>
   </ion-item>
 
+  <ion-card>
+  
   <ion-list>
+      
       <ion-item *ngFor="let s of slotList"> 
-        <ion-icon name="football" item-start></ion-icon>    
+            
+       <!-- <ion-icon name="football" item-start></ion-icon> -->
+        <button ion-button color="dark" outline> 
           {{s.Name}}
-          {{s.Rate}}
-          {{s.StartTime}}
+        </button>
+        <button ion-button color="dark" outline>        
+         Rs. {{s.Rate}}
+        </button>
+        <button ion-button color="dark" outline>
+          {{s.StartTime}}-
           {{s.EndTime}}
+        </button>
           <button ion-button round [style.background-color]="s.Booked ? 'grey':'green'" [class.button-disabled]="s.Booked==true" (click)="slotDetail(s.Id)">{{s.Booked==true ? 'Booked':'Book'}}</button>
-         
+        
       </ion-item>
     </ion-list>
- 
+ </ion-card>
 </ion-content>

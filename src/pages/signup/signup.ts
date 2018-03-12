@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController,LoadingController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
-
 import { ApplicationUser } from "../../models/application-user";
 import { ApplicationUserProvider } from "../../providers/application-user/application-user";
 
@@ -26,7 +25,8 @@ export class SignupPage {
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
-    private applicatioUserProvider: ApplicationUserProvider) {
+    private applicatioUserProvider: ApplicationUserProvider,
+    public loadingCtrl: LoadingController) {
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
@@ -53,7 +53,9 @@ export class SignupPage {
           position: 'top'
         });
         toast.present();
-        this.navCtrl.push(MainPage);
+        this.presentLoadingDefault();
+        this.navCtrl.push('LoginPage');
+
       }
      
     }, (err) => {
@@ -69,5 +71,17 @@ export class SignupPage {
       toast.present();
     });
     
+  }
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      spinner:'bubbles',
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
   }
 }

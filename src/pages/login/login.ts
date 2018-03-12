@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController,LoadingController } from 'ionic-angular';
 import { ApplicationUser } from "../../models/application-user";
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
@@ -24,7 +24,8 @@ export class LoginPage {
     public user: User,
     public toastCtrl: ToastController,
     private applicationUserProvider: ApplicationUserProvider,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    public loadingCtrl: LoadingController) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
@@ -42,8 +43,8 @@ export class LoginPage {
       });
       toast.present();
       if(resp["success"]==true){
-      
         this.navCtrl.push(MainPage);
+        this.presentLoadingDefault();
       }else{
         let toast = this.toastCtrl.create({
           message: resp["message"],
@@ -66,5 +67,17 @@ export class LoginPage {
       toast.present();
     });
     
+  }
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      spinner:'bubbles',
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
   }
 }
