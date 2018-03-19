@@ -17,7 +17,7 @@ const httpOptions = {
 
 @Injectable()
 export class GroundProvider {
-  private apiUrl= 'http://localhost:497843/ground/';
+  private apiUrl= 'http://turfbooking-2018.azurewebsites.net/ground/';
   constructor(public http: HttpClient) {
     console.log('Hello GroundProvider Provider');
   }

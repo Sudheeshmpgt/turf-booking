@@ -40,6 +40,10 @@
         <ion-input type="password" [(ngModel)]="applicationUser.ConfirmPassword" name="ConfirmPassword" #ConfirmPassword="ngModel">></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-label fixed>{{ 'CONTACT' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="applicationUser.Contact" name="Contact" #Name="ngModel"></ion-input>
+      </ion-item>
       <div padding>
         <button ion-button color="primary" [disabled]="!userForm.form.valid"  block>{{ 'SIGNUP_BUTTON' | translate }}</button>
       </div>

@@ -13,12 +13,17 @@
 </ion-header> 
 
 <ion-content padding>
-  <ion-item>
+<ion-item>
     <ion-label fixed>Date</ion-label>
-    <ion-input type="text" placeholder="Enter Date" [(ngModel)]="bookingDate"></ion-input>
+    <ion-input type="text" placeholder="Enter Date" (click)="showDate()" [(ngModel)]="bookingDate"></ion-input>
   </ion-item>
-
-  <ion-item>
+ <!-- <ion-item>
+    <ion-label fixed>Date</ion-label>
+    <span ion-datepicker (ionChanged)="setDate($event);" [value]="bookingDate"  full="true" calendar="true" clear class="ScheduleDate">
+    <span>{{bookingDate | date}} <ion-icon name="clipboard" item-left ></ion-icon> </span>
+  </span>
+  </ion-item>-->
+  <ion-item>  
     <ion-label fixed>Number Of Players</ion-label>
     <ion-input type="number" placeholder="Enter Number of Players" [(ngModel)]="NumberOfPlayers" ></ion-input>
   </ion-item>

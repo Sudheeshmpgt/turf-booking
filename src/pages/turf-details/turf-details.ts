@@ -32,7 +32,7 @@ export class TurfDetailsPage {
     console.log(this.groundList);
     var images=res['images'];
     console.log(images[0].Path);
-    this.image='http://localhost:49783/UploadedFiles/'+images[0].Path;
+    this.image='http://turfbooking-2018.azurewebsites.net/UploadedFiles/'+images[0].Path;
     console.log(this.image);
   }
 

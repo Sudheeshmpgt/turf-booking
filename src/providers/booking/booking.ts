@@ -17,7 +17,7 @@ const httpOptions={
 @Injectable()
 export class BookingProvider {
 
-  private apiUrl='http://localhost:49783/booking/';
+  private apiUrl='http://turfbooking-2018.azurewebsites.net/booking/';
   
   constructor(public http: HttpClient) {
     console.log('Hello BookingProvider Provider');

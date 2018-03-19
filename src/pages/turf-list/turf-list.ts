@@ -4,7 +4,7 @@ import { Turf } from "../../models/turf";
 import { TurfProvider  } from "../../providers/turf/turf";
 import { concat } from 'rxjs/observable/concat';
 import { Image } from "../../models/image";
-
+import { AppPreferences } from '@ionic-native/app-preferences';
 /**
  * Generated class for the TurfListPage page.
  *
@@ -22,12 +22,16 @@ export class TurfListPage {
   turflist: Turf[]=[];
   string="Hello World";
   profilePic:string="";
+  Email:any;
+  Password:any;
+  refresher:any;
   dataPresent:boolean=false;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private turfProvider:TurfProvider,
     public toastCtrl: ToastController,
+    private appPreferences: AppPreferences
   ) {
     
   }
@@ -36,19 +40,27 @@ export class TurfListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TurfListPage');
     this.getTurfs();
+
     console.log('ionViewDidLoad TurfDetailsPage');
+   this.appPreferences.fetch("Email").then(res=>{this.Email=res},err=>{console.error()});
+    this.appPreferences.fetch("Password").then(res=>{this.Password=res},err=>{console.error()});
     
   }
 
   getTurfs():void{
     this.turfProvider.turflist().subscribe(
       result=>{
-          //console.log(result);
+          console.log(result);
           if(result["success"]==true)
           {
             this.turflist=result["turfs"];
             console.log(this.turflist);
             this.dataPresent=true;
+            let toast = this.toastCtrl.create({
+              message: result["Email"],
+              duration: 3000,
+              position: 'top'
+            });
             
           }
           else{
@@ -98,4 +110,16 @@ export class TurfListPage {
     )
 
   }
+
+  doRefresh(refresher) {
+    
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+      this.getTurfs();
+    }, 1000);
+  }
+
 }

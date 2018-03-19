@@ -17,7 +17,7 @@ const httpOptions={
 
 @Injectable()
 export class SlotProvider {
-  private apiUrl='http://localhost:49783/slot/';
+  private apiUrl='http://turfbooking-2018.azurewebsites.net/slot/';
   constructor(public http: HttpClient) {
     console.log('Hello SlotProvider Provider');
   }

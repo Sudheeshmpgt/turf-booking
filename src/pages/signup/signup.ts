@@ -4,7 +4,7 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
-
+import { LoginPage } from '../login/login';
 import { ApplicationUser } from "../../models/application-user";
 import { ApplicationUserProvider } from "../../providers/application-user/application-user";
 
@@ -45,6 +45,7 @@ export class SignupPage {
           position: 'top'
         });
         toast.present();
+       
       }
       else{
         let toast = this.toastCtrl.create({
@@ -53,7 +54,7 @@ export class SignupPage {
           position: 'top'
         });
         toast.present();
-        this.navCtrl.push(MainPage);
+        this.navCtrl.push('LoginPage');
       }
      
     }, (err) => {

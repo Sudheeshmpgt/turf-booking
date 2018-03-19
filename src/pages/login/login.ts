@@ -6,6 +6,7 @@ import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
 import { ApplicationUserProvider } from "../../providers/application-user/application-user";
 import { LoginModel } from "../../models/login-model";
+import { AppPreferences } from '@ionic-native/app-preferences';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -24,7 +25,8 @@ export class LoginPage {
     public user: User,
     public toastCtrl: ToastController,
     private applicationUserProvider: ApplicationUserProvider,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    private appPreferences: AppPreferences) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
@@ -42,7 +44,8 @@ export class LoginPage {
       });
       toast.present();
       if(resp["success"]==true){
-      
+        this.appPreferences.store("Email",this.login.Email);
+        this.appPreferences.store("Password",this.login.Password);
         this.navCtrl.push(MainPage);
       }else{
         let toast = this.toastCtrl.create({

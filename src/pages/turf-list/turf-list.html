@@ -13,8 +13,9 @@
 </ion-header>
 
 <ion-content padding>
-   
  
+  <h2>{{Email}}</h2>
+  <h2>{{Password}}</h2>
   <ion-list *ngIf="dataPresent==true">
 
     <ion-item-sliding *ngFor="let t of turflist" >
@@ -31,5 +32,12 @@
       </button>
     </ion-item-sliding>
   </ion-list>
- 
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+           
+        </ion-refresher-content>
+       
+      </ion-refresher>
+    
+      
 </ion-content>
