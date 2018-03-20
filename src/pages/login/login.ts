@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController,LoadingController } from 'ionic-angular';
 import { ApplicationUser } from "../../models/application-user";
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
@@ -26,7 +26,11 @@ export class LoginPage {
     public toastCtrl: ToastController,
     private applicationUserProvider: ApplicationUserProvider,
     public translateService: TranslateService,
+<<<<<<< HEAD
     private appPreferences: AppPreferences) {
+=======
+    public loadingCtrl: LoadingController) {
+>>>>>>> 871bd2229bc534d6a6091e34d464a14f1fc78eb2
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
@@ -45,12 +49,16 @@ export class LoginPage {
       });
       toast.present();
       if(resp["success"]==true){
+<<<<<<< HEAD
         this.appPreferences.store("Email",this.login.Email);
         this.appPreferences.store("Password",this.login.Password);
         this.appPreferences.store("Name",resp["user"].Name);
         this.appPreferences.store("Contact",resp["user"].Contact);
         this.appPreferences.store("UserId",resp["user"].UserId);
+=======
+>>>>>>> 871bd2229bc534d6a6091e34d464a14f1fc78eb2
         this.navCtrl.push(MainPage);
+        this.presentLoadingDefault();
       }else{
         let toast = this.toastCtrl.create({
           message: resp["message"],
@@ -73,5 +81,17 @@ export class LoginPage {
       toast.present();
     });
     
+  }
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      spinner:'bubbles',
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
   }
 }
