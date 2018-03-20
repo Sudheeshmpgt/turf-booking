@@ -97,7 +97,9 @@ export class BookingPage {
       mode: 'date',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
     }).then(
-      date => console.log('Got date: ', date),
+      date => console.log(date),
+        
+       
       err => console.log('Error occurred while getting date: ', err)
     );
   }

@@ -22,6 +22,7 @@ import { SlotProvider } from '../providers/slot/slot';
 import { BookingProvider } from '../providers/booking/booking';
 import { SlotdetailProvider } from '../providers/slotdetail/slotdetail';
 import { DatePicker } from '@ionic-native/date-picker';
+import { FeedbackProvider } from '../providers/feedback/feedback';
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -83,7 +84,8 @@ export function provideSettings(storage: Storage) {
     BookingProvider,
     SlotdetailProvider,
     AppPreferences,
-    DatePicker
+    DatePicker,
+    FeedbackProvider
   ]
 })
 export class AppModule { }

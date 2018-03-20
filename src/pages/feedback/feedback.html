@@ -1,0 +1,27 @@
+<!--
+  Generated template for the FeedbackPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>feedback</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-select  ([ngModel])="feedback.TurfId" multiple="true" cancelText="Nah" okText="Okay!">
+        <ion-option *ngFor="let t of turflist" [value]="t.Id" >{{t.Name}}</ion-option>
+    </ion-select>
+    <ion-item>
+    <ion-label>Comment</ion-label>
+    <ion-textarea elastic [(ngModel)]="feedback.Comment" placeholder="Enter Comment"></ion-textarea>
+  </ion-item>
+  <ion-item>
+      <button ion-button (click)="feedbackTurf()" >Save</button>
+  </ion-item>
+</ion-content>

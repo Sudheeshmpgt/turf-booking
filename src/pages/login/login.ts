@@ -31,6 +31,7 @@ export class LoginPage {
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
+    this.appPreferences.clearAll();
   }
 
   // Attempt to login in through our User service
@@ -46,6 +47,9 @@ export class LoginPage {
       if(resp["success"]==true){
         this.appPreferences.store("Email",this.login.Email);
         this.appPreferences.store("Password",this.login.Password);
+        this.appPreferences.store("Name",resp["user"].Name);
+        this.appPreferences.store("Contact",resp["user"].Contact);
+        this.appPreferences.store("UserId",resp["user"].UserId);
         this.navCtrl.push(MainPage);
       }else{
         let toast = this.toastCtrl.create({

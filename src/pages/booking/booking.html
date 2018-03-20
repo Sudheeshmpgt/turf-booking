@@ -13,10 +13,15 @@
 </ion-header> 
 
 <ion-content padding>
-<ion-item>
+    <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime type="text" placeholder="Enter Date" displayFormat="MM/DD/YYYY" [(ngModel)]="bookingDate"></ion-datetime>
+      </ion-item>
+  <!--<ion-item>
+  
     <ion-label fixed>Date</ion-label>
     <ion-input type="text" placeholder="Enter Date" (click)="showDate()" [(ngModel)]="bookingDate"></ion-input>
-  </ion-item>
+  </ion-item>-->
  <!-- <ion-item>
     <ion-label fixed>Date</ion-label>
     <span ion-datepicker (ionChanged)="setDate($event);" [value]="bookingDate"  full="true" calendar="true" clear class="ScheduleDate">
