@@ -57,9 +57,12 @@ export class FeedbackPage {
   feedbackTurf():void{
     this.feedbackProvider.feedbackTurf(this.feedback).subscribe(
       result=>{
+        console.log("fhjh"+result);
         if(result["success"]==true){
+          console.log(result);
           let toast = this.toastCtrl.create({
             message: result["message"],
+           
             duration: 3000,
             position: 'top'
           });
@@ -72,9 +75,17 @@ export class FeedbackPage {
           });
           toast.present();
         }
+      },(err) => {
         
-      }
-    );
+             // this.navCtrl.push(MainPage);
+        
+              // Unable to sign up
+              let toast = this.toastCtrl.create({
+                message: err["message"],
+                duration: 3000,
+                position: 'top'
+              });
+      });
   }
 
 }

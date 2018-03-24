@@ -13,7 +13,7 @@ const httpOptions={
 };
 @Injectable()
 export class FeedbackProvider {
-  private apiUrl='http://turfbooking-2018.azurewebsites.net/booking/';
+  private apiUrl='http://turfbooking-2018.azurewebsites.net/feedback/';
   constructor(public http: HttpClient) {
     console.log('Hello FeedbackProvider Provider');
   }

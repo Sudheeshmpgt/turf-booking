@@ -26,11 +26,8 @@ export class LoginPage {
     public toastCtrl: ToastController,
     private applicationUserProvider: ApplicationUserProvider,
     public translateService: TranslateService,
-<<<<<<< HEAD
+    public loadingCtrl: LoadingController,
     private appPreferences: AppPreferences) {
-=======
-    public loadingCtrl: LoadingController) {
->>>>>>> 871bd2229bc534d6a6091e34d464a14f1fc78eb2
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
@@ -49,14 +46,11 @@ export class LoginPage {
       });
       toast.present();
       if(resp["success"]==true){
-<<<<<<< HEAD
         this.appPreferences.store("Email",this.login.Email);
         this.appPreferences.store("Password",this.login.Password);
         this.appPreferences.store("Name",resp["user"].Name);
         this.appPreferences.store("Contact",resp["user"].Contact);
         this.appPreferences.store("UserId",resp["user"].UserId);
-=======
->>>>>>> 871bd2229bc534d6a6091e34d464a14f1fc78eb2
         this.navCtrl.push(MainPage);
         this.presentLoadingDefault();
       }else{

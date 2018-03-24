@@ -4,10 +4,6 @@ import { IonicPage, NavController, ToastController,LoadingController } from 'ion
 
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
-<<<<<<< HEAD
-import { LoginPage } from '../login/login';
-=======
->>>>>>> 871bd2229bc534d6a6091e34d464a14f1fc78eb2
 import { ApplicationUser } from "../../models/application-user";
 import { ApplicationUserProvider } from "../../providers/application-user/application-user";
 
@@ -58,13 +54,9 @@ export class SignupPage {
           position: 'top'
         });
         toast.present();
-<<<<<<< HEAD
-        this.navCtrl.push('LoginPage');
-=======
         this.presentLoadingDefault();
         this.navCtrl.push('LoginPage');
 
->>>>>>> 871bd2229bc534d6a6091e34d464a14f1fc78eb2
       }
      
     }, (err) => {
