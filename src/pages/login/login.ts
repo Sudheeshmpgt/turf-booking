@@ -37,6 +37,7 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
+    this.presentLoadingDefault();
     this.applicationUserProvider.login(this.login).subscribe((resp) => {
       console.log(resp);
       let toast = this.toastCtrl.create({
@@ -50,9 +51,10 @@ export class LoginPage {
         this.appPreferences.store("Password",this.login.Password);
         this.appPreferences.store("Name",resp["user"].Name);
         this.appPreferences.store("Contact",resp["user"].Contact);
-        this.appPreferences.store("UserId",resp["user"].UserId);
+        this.appPreferences.store("UserId",resp["user"].Id);
+        localStorage.setItem("UserId",resp["user"].Id);
         this.navCtrl.push(MainPage);
-        this.presentLoadingDefault();
+       
       }else{
         let toast = this.toastCtrl.create({
           message: resp["message"],

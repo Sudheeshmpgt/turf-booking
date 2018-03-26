@@ -59,7 +59,7 @@
           {{s.StartTime}}-
           {{s.EndTime}}
         </button>
-          <button ion-button round [style.background-color]="s.Booked ? 'grey':'green'" [class.button-disabled]="s.Booked==true" (click)="slotDetail(s.Id)">{{s.Booked==true ? 'Booked':'Book'}}</button>
+          <button ion-button round [style.background-color]="s.Booked ? 'grey':'green'" [class.button-disabled]="s.Booked==true" (click)="slotDetail(s.Id,s.Booked)">{{s.Booked==true ? 'Booked':'Book'}}</button>
         
       </ion-item>
     </ion-list>

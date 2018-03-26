@@ -34,6 +34,7 @@ export class SignupPage {
 }
 
   doSignup() {
+    this.presentLoadingDefault();
     // Attempt to login in through our User service
     this.applicatioUserProvider.register(this.applicationUser).subscribe((resp) => {
       console.log(resp);
@@ -54,7 +55,7 @@ export class SignupPage {
           position: 'top'
         });
         toast.present();
-        this.presentLoadingDefault();
+       
         this.navCtrl.push('LoginPage');
 
       }

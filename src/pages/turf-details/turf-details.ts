@@ -43,10 +43,11 @@ export class TurfDetailsPage {
   }
 
   openPage(id:number) :void{
+    this.presentLoadingDefault();
     this.navCtrl.push('BookingPage', {
      gid: id
     });
-    this.presentLoadingDefault();
+    
   }
 
   presentLoadingDefault() {

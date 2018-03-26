@@ -26,6 +26,7 @@ export class TurfListPage {
   Password:any;
   refresher:any;
   dataPresent:boolean=false;
+  UserId:string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -44,7 +45,7 @@ export class TurfListPage {
     console.log('ionViewDidLoad TurfDetailsPage');
    this.appPreferences.fetch("Email").then(res=>{this.Email=res},err=>{console.error()});
     this.appPreferences.fetch("Password").then(res=>{this.Password=res},err=>{console.error()});
-    
+    this.appPreferences.fetch("UserId").then(res=>{this.UserId=res},err=>{console.error()});
   }
 
   getTurfs():void{

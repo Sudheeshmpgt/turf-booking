@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { SlotdetailProvider } from "../../providers/slotdetail/slotdetail";   
 import { Slot } from "../../models/slot";
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { BookingProvider } from "../../providers/booking/booking";
+import { AppPreferences } from '@ionic-native/app-preferences';
 /**
  * Generated class for the SlotdetailPage page.
  *
@@ -26,8 +27,12 @@ export class SlotdetailPage {
   startTime:DateTime;
   endTime:DateTime;
   slot:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private bookingProvider:BookingProvider, private toastCtrl:ToastController, )  {
-    
+  UserId:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private bookingProvider:BookingProvider,  private appPreferences:AppPreferences,
+    private toastCtrl:ToastController, 
+    public loadingCtrl: LoadingController)  {
+      this.appPreferences.fetch("UserId").then(res=>{this.UserId=res},err=>{console.error()}); 
   }
 
   ionViewDidLoad() {
@@ -46,7 +51,7 @@ export class SlotdetailPage {
   }
 
   bookSlot(Id:number,Rate:number):void{
-    this.bookingProvider.bookSlot(Id,this.bookingDate,this.NumberOfPlayers,this.totalAmount).subscribe(
+    this.bookingProvider.bookSlot(Id,this.bookingDate,this.NumberOfPlayers,this.totalAmount,this.UserId).subscribe(
       res=>{
         if(res["success"])
         {
@@ -75,6 +80,18 @@ export class SlotdetailPage {
       
 
   
+    }
+    presentLoadingDefault() {
+      let loading = this.loadingCtrl.create({
+        spinner:'bubbles',
+        content: 'Please wait...'
+      });
+    
+      loading.present();
+    
+      setTimeout(() => {
+        loading.dismiss();
+      }, 5000);
     }
     
 }

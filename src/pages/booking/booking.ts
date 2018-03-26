@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController,LoadingController } from 'ionic-angular';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { SlotProvider } from "../../providers/slot/slot";
 import { Slot } from "../../models/slot";
@@ -28,8 +28,8 @@ export class BookingPage {
      public toastCtrl: ToastController,private slotProvider:SlotProvider, 
      private bookProvider:BookingProvider,
      private slotDetailProvider:SlotdetailProvider,
-     private datePicker: DatePicker
-
+     private datePicker: DatePicker,
+     public loadingCtrl: LoadingController
     ) {
     this.groundId=Number(navParams.get('gid'));
     console.log(navParams.get('gid'));
@@ -44,6 +44,7 @@ export class BookingPage {
   }
   
   fetchSlot():void{
+    this.presentLoadingDefault();
     console.log(this.groundId);
     console.log(this.bookingDate);
    // var date=new DateTime(this.);
@@ -71,7 +72,8 @@ export class BookingPage {
     )
   }
 
-  slotDetail(slotId:number):void{
+  slotDetail(slotId:number,status:boolean):void{
+    if(status!=true){
     this.slotDetailProvider.slotDetailProvider(slotId).subscribe(
       res=>{
         if(res["success"])
@@ -86,10 +88,16 @@ export class BookingPage {
           });
           toast.present();
         }
-
       }
     );
-
+  }else{
+    let toast = this.toastCtrl.create({
+      message: "Slot already Booked!",
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+  }
   }  
   showDate():void{
     this.datePicker.show({
@@ -102,6 +110,18 @@ export class BookingPage {
        
       err => console.log('Error occurred while getting date: ', err)
     );
+  }
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      spinner:'bubbles',
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
   }
  
 

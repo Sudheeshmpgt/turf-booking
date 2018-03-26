@@ -14,5 +14,33 @@
 
 
 <ion-content padding>
-
+    <h1>{{UserId}}</h1>
+ <ion-list >
+    
+        <ion-item *ngFor="let b of bookinglist" >
+          <h1>{{b.Name}}</h1>
+          <h1>{{b.Number}}</h1>
+          <h1>{{b.SName}}</h1>
+          <h1> {{b.StartTime}}-
+              {{b.EndTime}}</h1>
+          <h1>{{b.Rate}}</h1>
+         <button ion-button color="dark" outline> 
+            {{b.Name}}
+          </button>
+          <button ion-button color="dark" outline>        
+           {{b.Number}}
+          </button>
+          <p>{{b.SName}}</p>
+          <button ion-button color="dark" outline>
+            {{b.StartTime}}-
+            {{b.EndTime}}
+          </button>
+          <button ion-button color="dark" outline>
+            Rs.{{b.Rate}}
+          </button>
+        </ion-item>
+        
+      </ion-list>
+          
+    
 </ion-content>

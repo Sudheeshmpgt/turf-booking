@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-
+import { AppPreferences } from '@ionic-native/app-preferences';
 /**
  * The Welcome Page is a splash page that quickly describes the app,
  * and then directs the user to create an account or log in.
@@ -14,7 +14,9 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController,private appPreferences:AppPreferences) {
+    this.appPreferences.fetch("Email").then(res=>{this.navCtrl.push('TurfListPage');},err=>{});
+   }
 
   login() {
     this.navCtrl.push('LoginPage');

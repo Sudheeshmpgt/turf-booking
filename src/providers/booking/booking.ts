@@ -16,15 +16,18 @@ const httpOptions={
 
 @Injectable()
 export class BookingProvider {
-
+  
   private apiUrl='http://turfbooking-2018.azurewebsites.net/booking/';
   
   constructor(public http: HttpClient) {
     console.log('Hello BookingProvider Provider');
+   }
 
+  bookSlot(SlotId:number,date:DateTime,NumberOfPlayers:number,Rate:number,UserId:string):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'bookSlotApi?SlotId='+SlotId+'&Date='+date+'&NumberOfPlayers='+NumberOfPlayers+'&Rate='+Rate+'&UserId='+UserId,httpOptions); 
   }
-
-  bookSlot(SlotId:number,date:DateTime,NumberOfPlayers:number,Rate:number):Observable<any>{
-    return this.http.get<any>(this.apiUrl+'bookSlotApi?SlotId='+SlotId+'&Date='+date+'&NumberOfPlayers='+NumberOfPlayers+'&Rate='+Rate,httpOptions); 
+   
+  bookList(UserId:string):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'BookListApi?userId='+UserId,httpOptions);
   }
 }
