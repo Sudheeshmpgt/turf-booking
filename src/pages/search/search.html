@@ -14,13 +14,16 @@
    <ion-list>
     <ion-item-sliding *ngFor="let t of currentItems">
       <button ion-item (click)="fetchTurf(t.Id)">
-        <ion-avatar item-start>
-          <img [src]="t.profilePic" />
-        </ion-avatar>
+          <ion-avatar item-start >
+              <!-- <ion-img  [src]="t.Image"></ion-img>-->
+             <img [src]="t.Image" />
+             </ion-avatar>
+        
         <h2>{{t.Name}}</h2>
         <p>{{t.Contact}}</p>
         <p>{{t.Location}}</p>
-        <ion-note item-end >{{t.Location}}</ion-note>
+       
+        <button ion-button clear item-end>View</button>
       </button>
     </ion-item-sliding>
   </ion-list>

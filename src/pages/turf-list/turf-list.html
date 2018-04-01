@@ -15,9 +15,7 @@
 
 <ion-content padding>
  
-  <h2>{{Email}}</h2>
-  <h2>{{Password}}</h2>
-  <h2>{{UserId}}</h2>
+  
   <ion-list *ngIf="dataPresent==true">
 
     <ion-item-sliding *ngFor="let t of turflist" >
@@ -29,7 +27,7 @@
         <h2>{{t.Name}}</h2>
         <p>{{t.Contact}}</p>
         <p>{{t.Location}}</p>
-        <ion-note item-end >{{t.Location}}</ion-note>
+       <!-- <ion-note item-end >{{t.Location}}</ion-note>-->
         <button ion-button clear item-end>View</button>
       </button>
     </ion-item-sliding>

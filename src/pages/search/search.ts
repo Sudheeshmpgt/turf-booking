@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
@@ -15,7 +15,9 @@ export class SearchPage {
 
   currentItems: Turf[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items,private turfProvider:TurfProvider,private toastCtrl:ToastController) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public items: Items,private turfProvider:TurfProvider,
+    public loadingCtrl: LoadingController,private toastCtrl:ToastController) { }
 
   /**
    * Perform a service for the proper items.
@@ -55,6 +57,7 @@ export class SearchPage {
     );
   }
   fetchTurf(id:number):void{
+    this.presentLoadingDefault();
     console.log(id);
     this.turfProvider.turffind(id).subscribe(
         res=>{
@@ -89,6 +92,18 @@ export class SearchPage {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
+  }
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      spinner:'bubbles',
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 3000);
   }
 
 }
