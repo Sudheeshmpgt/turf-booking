@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ToastController,LoadingController} from 'ionic-angular';
 import { Turf } from "../../models/turf";
 import { TurfProvider  } from "../../providers/turf/turf";
 import { concat } from 'rxjs/observable/concat';
@@ -32,6 +32,7 @@ export class TurfListPage {
     public navParams: NavParams,
     private turfProvider:TurfProvider,
     public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController,
     private appPreferences: AppPreferences
   ) {
     
@@ -85,6 +86,7 @@ export class TurfListPage {
 
   //Fetch the turf
   fetchTurf(id:number):void{
+    this.presentLoadingDefault();
     console.log(id);
     this.turfProvider.turffind(id).subscribe(
         res=>{
@@ -123,4 +125,16 @@ export class TurfListPage {
     }, 1000);
   }
 
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      spinner:'bubbles',
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
+  }
 }

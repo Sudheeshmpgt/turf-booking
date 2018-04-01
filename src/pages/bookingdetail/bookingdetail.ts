@@ -24,7 +24,7 @@ export class BookingdetailPage {
   startTime:DateTime;
   endTime:DateTime;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -41,4 +41,21 @@ export class BookingdetailPage {
     this.dataPresent=true;
   }
 
+  goToTurfList():void{
+    this.presentLoadingDefault();
+    this.navCtrl.push('TurfListPage');
+  }
+
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      spinner:'bubbles',
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
+  }
 }

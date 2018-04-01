@@ -51,6 +51,7 @@ export class SlotdetailPage {
   }
 
   bookSlot(Id:number,Rate:number):void{
+    this.presentLoadingDefault();
     this.bookingProvider.bookSlot(Id,this.bookingDate,this.NumberOfPlayers,this.totalAmount,this.UserId).subscribe(
       res=>{
         if(res["success"])

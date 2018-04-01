@@ -73,6 +73,7 @@ export class BookingPage {
   }
 
   slotDetail(slotId:number,status:boolean):void{
+    this.presentLoadingDefault();
     if(status!=true){
     this.slotDetailProvider.slotDetailProvider(slotId).subscribe(
       res=>{
