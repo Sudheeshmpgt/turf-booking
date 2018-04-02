@@ -92,7 +92,7 @@ export class SlotdetailPage {
     
       setTimeout(() => {
         loading.dismiss();
-      }, 5000);
+      }, 3000);
     }
     
 }

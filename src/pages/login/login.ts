@@ -88,6 +88,6 @@ export class LoginPage {
   
     setTimeout(() => {
       loading.dismiss();
-    }, 5000);
+    }, 3000);
   }
 }

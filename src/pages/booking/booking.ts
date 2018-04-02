@@ -122,7 +122,7 @@ export class BookingPage {
   
     setTimeout(() => {
       loading.dismiss();
-    }, 5000);
+    }, 3000);
   }
  
 
