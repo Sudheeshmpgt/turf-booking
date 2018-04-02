@@ -6,8 +6,10 @@
       {{ 'WELCOME_INTRO' | translate }}
     </div>
   </div>
-  <div padding>
+  <div padding >
+      <ion-list *ngIf="dataPresent==true">
     <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
     <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
+    </ion-list>
   </div>
 </ion-content>

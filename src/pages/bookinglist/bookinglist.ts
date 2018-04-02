@@ -20,6 +20,7 @@ export class BookinglistPage {
   userpresent:boolean;
   bookinglist: Booking[]=[];
   dataPresent:boolean=false;
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private bookingProvider:BookingProvider,
     private appPreferences:AppPreferences,

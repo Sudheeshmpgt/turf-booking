@@ -14,13 +14,18 @@ import { AppPreferences } from '@ionic-native/app-preferences';
 })
 export class WelcomePage {
   user:any;
+  Email:any;
+  dataPresent:boolean=false;
   constructor(public navCtrl: NavController,private appPreferences:AppPreferences,public toastCtrl: ToastController) {
    // this.appPreferences.fetch("Email").then(res=>{this.navCtrl.push('TurfListPage');},err=>{});
     this.user=localStorage.getItem("UserId");
   }
   ionViewDidLoad(){
-    this.appPreferences.fetch("Email").then(
+    this.appPreferences.fetch("Email").then(res=>{this.Email=res});
+    this.load();
+   /* this.appPreferences.fetch("Email").then(
     res=>{
+     
       let toast = this.toastCtrl.create({
       message: res.toString(),
       duration: 3000,
@@ -36,7 +41,8 @@ export class WelcomePage {
         position: 'top'
       });
       toast.present();
-    });
+    });*/
+    //this.dataPresent=true;
     console.log(this.user);
    /* if(this.user!=null){
       this.navCtrl.push('TurfListPage');
@@ -44,6 +50,13 @@ export class WelcomePage {
       this.login();
     }*/
    }
+  load(){
+    if(this.Email!=null){
+      this.navCtrl.push('TurfListPage'); 
+    }else{
+      this.dataPresent=true;
+    }
+  }
   login() {
     this.navCtrl.push('LoginPage'); 
   }
