@@ -17,19 +17,37 @@
     <h1>{{UserId}}</h1>
  <ion-list >
     
-        <ion-item *ngFor="let b of bookinglist" >
+        <ion-item-sliding *ngFor="let b of bookinglist" >
         <!--  <h1>{{b.Name}}</h1>
           <h1>{{b.Number}}</h1>
           <h1>{{b.SName}}</h1>
           <h1> {{b.StartTime}}-
               {{b.EndTime}}</h1>
           <h1>{{b.Rate}}</h1>-->
-          <ion-note item-start >{{b.Name}}</ion-note> 
+          
+          <ion-note item-start >
+            <ion-icon name="football">  </ion-icon>
+           </ion-note>
+          <button ion-item>
+          {{b.Name}} 
+          <p>
+          <button ion-button color="danger" round>
           <h2>{{b.Date}}</h2>
-          <p> {{b.Number}}</p>
-          <p>{{b.SName}}</p>
-          <p> {{b.StartTime}}{{b.EndTime}}</p>
+          </button>
+          </p>
+          <p>
+          <button ion-button color="light" round>
+             {{b.Number}}-{{b.SName}}
+          </button>
+          </p>
+          <p>
+          <button ion-button color="light" round>
+             {{b.StartTime}}-{{b.EndTime}}
+          </button>
+        </p>
           <ion-note item-end >Rs.{{b.Rate}}</ion-note>  
+          </button>
+      
       <!--   <button ion-button color="dark" outline> 
             {{b.Name}}
           </button>
@@ -44,7 +62,7 @@
           <button ion-button color="dark" outline>
             Rs.{{b.Rate}}
           </button>-->
-        </ion-item>
+        </ion-item-sliding>
         
       </ion-list>
           
