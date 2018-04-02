@@ -4,6 +4,7 @@ import { TurfProvider  } from "../../providers/turf/turf";
 import { Turf } from "../../models/turf";
 import { Feedback } from "../../models/feedback";
 import { FeedbackProvider  } from "../../providers/feedback/feedback";
+import { AppPreferences } from '@ionic-native/app-preferences';
 /**
  * Generated class for the FeedbackPage page.
  *
@@ -19,10 +20,14 @@ import { FeedbackProvider  } from "../../providers/feedback/feedback";
 export class FeedbackPage {
   turflist: Turf[]=[];
   feedback:Feedback=new Feedback();
-  Comment:string;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public toastCtrl: ToastController,private turfProvider:TurfProvider,
-    private feedbackProvider:FeedbackProvider) {
+    private feedbackProvider:FeedbackProvider,
+    private appPreferences: AppPreferences) {
+      this.appPreferences.fetch("UserId").then(res=>{this.feedback.UserId=res;
+      console.log(this.feedback.UserId)},err=>{});
+
   }
 
   ionViewDidLoad() {
@@ -34,7 +39,6 @@ export class FeedbackPage {
         {
           this.turflist=result["turfs"];
           console.log(this.turflist);
-         
           let toast = this.toastCtrl.create({
             message: result["Email"],
             duration: 3000,
@@ -54,15 +58,22 @@ export class FeedbackPage {
         
     });
   }
+  setTurfId(Id:number):void{
+    this.feedback.TurfId=Id;
+    console.log(this.feedback.TurfId);
+  }
   feedbackTurf():void{
-    this.feedbackProvider.feedbackTurf(this.feedback).subscribe(
+  //  console.log(this.feedback.Comment);
+  console.log(this.feedback);
+  console.log(this.feedback.TurfId);
+    this.feedbackProvider.feedbackproTurf(this.feedback).subscribe(
       result=>{
         console.log("fhjh"+result);
         if(result["success"]==true){
           console.log(result);
+          console.log(this.feedback.Comment);
           let toast = this.toastCtrl.create({
             message: result["message"],
-           
             duration: 3000,
             position: 'top'
           });
@@ -78,13 +89,14 @@ export class FeedbackPage {
       },(err) => {
         
              // this.navCtrl.push(MainPage);
-        
+            console.log(err);
               // Unable to sign up
               let toast = this.toastCtrl.create({
-                message: err["message"],
+                message: err.toString(),
                 duration: 3000,
                 position: 'top'
               });
+              toast.present();
       });
   }
 

@@ -14,9 +14,10 @@
 
 
 <ion-content padding>
-    <ion-select  ([ngModel])="feedback.TurfId" multiple="true" cancelText="Nah" okText="Okay!">
-        <ion-option *ngFor="let t of turflist" [value]="t.Id" >{{t.Name}}</ion-option>
+    <ion-select  ([ngModel])="feedback.TurfId" multiple="false"  >
+        <ion-option  *ngFor="let t of turflist" [value]="t.Id" (click)="setTurfId(t.Id)"  >{{t.Name}}</ion-option>
     </ion-select>
+   <h1>{{feedback.TurfId}}</h1> 
     <ion-item>
     <ion-label>Comment</ion-label>
     <ion-textarea elastic [(ngModel)]="feedback.Comment" placeholder="Enter Comment"></ion-textarea>
