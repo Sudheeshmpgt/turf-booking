@@ -13,11 +13,11 @@ const httpOptions={
 };
 @Injectable()
 export class FeedbackProvider {
-  private apiUrl='http://turfbooking-2018.azurewebsites.net/feedback/';
+  private apiUrl='http://localhost:49783/Feedback/';
   constructor(public http: HttpClient) {
     console.log('Hello FeedbackProvider Provider');
   }
-  feedbackTurf(feedback:Feedback):Observable<any>{
+  feedbackproTurf(feedback:Feedback):Observable<any>{
     return this.http.post<any>(this.apiUrl+'feedbackApi',feedback,httpOptions); 
   }
 }
